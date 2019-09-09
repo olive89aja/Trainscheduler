@@ -14,13 +14,28 @@ const firebaseConfig = {
   //#destination-name
   //#train-time
   //#train-frequency
+  //#submit
 
+  
+
+$("#submit").on("click", function() {
+  
   const trainN = $("#train-name").val().trim();
+  console.log(trainN);
 
   const destinationN = $("#destination-name").val().trim();
-
+  console.log(destinationN);
+  
   const trainT = $("#train-time").val();
   
-  const trainF = $("#train-time").val();
+  const trainF = $("#train-frequency").val();
+// $("#newtrain").text(trainN);
+// $("#newtrain1").text(destinationN);
+// $("#newtrain2").text("test2");
+// $("#newtrain3").text("test3");
+// $("#destination-name").val().trim();
+// $("#train-time").val().trim();
+// $("#train-frequency").val().trim();
 
-  
+
+})

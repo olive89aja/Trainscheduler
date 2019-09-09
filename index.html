@@ -58,7 +58,14 @@ to read up on Firebase authentication for this bonus exercise.
               <th scope="col">Minutes away</th>
             </tr>
            </thead>
-          <tbody> 
+          <tbody>
+              <tr>
+                  <th scope="row"></th>
+                  <td id=newtrain></td>
+                  <td id=newtrain1></td>
+                  <td id=newtrain2></td>
+                  <td id=newtrain3></td>
+                </tr> 
                 <tr>
                   <th scope="row">2018</th>
                   <td>Union Station</td>
@@ -87,7 +94,7 @@ to read up on Firebase authentication for this bonus exercise.
         <div class="card-title">Add train</div>
         <div class="form">
                 <div class="form-group">
-                        <label for="destination">Train name</label>
+                        <label for="trainName">Train name</label>
                         <input type="text" id="train-name" />
                       </div>
           <div class="form-group">
@@ -96,7 +103,7 @@ to read up on Firebase authentication for this bonus exercise.
           </div>
           <div class="form-group">
             <label for="">First train time</label>
-            <input type="text" id="train-time" />
+            <input type="number" id="train-time" />
           </div>
           <div class="form-group">
             <label for="frequency">Frequency</label>
@@ -105,6 +112,6 @@ to read up on Firebase authentication for this bonus exercise.
           <button id="submit">Submit</button>
         </div>
       </div>    
-    
+    <script src="assets/app.js"></script>
 </body>
 </html>
