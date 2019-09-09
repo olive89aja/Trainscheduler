@@ -27,15 +27,14 @@ $("#submit").on("click", function() {
   console.log(destinationN);
   
   const trainT = $("#train-time").val();
-  
+  console.log(trainT);
   const trainF = $("#train-frequency").val();
-// $("#newtrain").text(trainN);
-// $("#newtrain1").text(destinationN);
-// $("#newtrain2").text("test2");
-// $("#newtrain3").text("test3");
-// $("#destination-name").val().trim();
-// $("#train-time").val().trim();
-// $("#train-frequency").val().trim();
+  console.log(trainF);
 
+$("#newtrain").text(trainN);
+ 
+$("#newtrain0").text(destinationN);
+$("#newtrain1").text(trainF);
+// $("#newtrain2").text("test3");
 
 })
