@@ -31,10 +31,24 @@ $("#submit").on("click", function() {
   const trainF = $("#train-frequency").val();
   console.log(trainF);
 
-$("#newtrain").text(trainN);
- 
+$("#newtrain").text(trainN); 
 $("#newtrain0").text(destinationN);
 $("#newtrain1").text(trainF);
-// $("#newtrain2").text("test3");
 
 })
+
+
+//Convert time in minutes. 1440 in 24hours 
+
+//x = frequency 
+
+//y = train 1
+
+//y+x = train2
+
+//7. 60. Next train : 8,9,10,11...
+
+//convertTime = hours*60+minutes
+//const nextTrain = convertTime+frequency
+//const nextTrain = convertTime+2*frequency
+//var nextTrain = convertTime+n*frequency
