@@ -67,17 +67,14 @@ $("#newtrain1").text(trainF);
 })
 
 
-//moment
+//function using moment.js
 function calculateTrains(){
 
 //Copy paste from exercise 21 TrainPredictions
 
 let tFrequency = 60;
 
-
 let firstTime = "09:35";
-
-
 
 let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
     console.log(firstTimeConverted);
@@ -95,12 +92,16 @@ let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
     console.log(tRemainder);
 
     // Minute Until Train
-    let tMinutesTillTrain = tFrequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+    let minutesAway = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + minutesAway);
 
     // Next Train
-    let nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-}
+    let nextArrival = moment().add(minutesAway, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextArrival).format('hh:mm'));
+
+    $("#newtrain2").text(moment(nextArrival).format('hh:mm'));
+    $("#newtrain3").text(minutesAway);
+
+  }
 
 calculateTrains();
