@@ -51,29 +51,56 @@ console.log(nTrain.Frequency);
 
 })
 
-database.ref().on("child_added",function(snapshot,prevChildKey){
+// source for child_added : class + https://firebase.google.com/docs/database/admin/retrieve-data
 
-var trainN
-var destinationN
-var trainT
-var trainF
+database.ref().on("child_added",function(dataSnapshot,prevChildKey){
 
-
+var trainN = dataSnapshot.val().Name;
+var destinationN = dataSnapshot.val().Destination;
+var trainT = dataSnapshot.val().Time;
+var trainF = dataSnapshot.val().Frequency;
+console.log("where"+destinationN);
+$("#newtrain").text(trainN); 
+$("#newtrain0").text(destinationN);
+$("#newtrain1").text(trainF);
 
 })
 
 
-//Convert time in minutes. 1440 in 24hours 
+//moment
+function calculateTrains(){
 
-//x = frequency 
+//Copy paste from exercise 21 TrainPredictions
 
-//y = train 1
+let tFrequency = 60;
 
-//y+x = train2
 
-//7. 60. Next train : 8,9,10,11...
+let firstTime = "09:35";
 
-//convertTime = hours*60+minutes
-//const nextTrain = convertTime+frequency
-//const nextTrain = convertTime+2*frequency
-//var nextTrain = convertTime+n*frequency
+
+
+let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+
+    // Current Time
+    let currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // Difference between the times
+    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    // Time apart (remainder)
+    let tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    let tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    let nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+}
+
+calculateTrains();
