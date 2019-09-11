@@ -93,7 +93,7 @@ let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
     let nextArrival = moment().add(minutesAway, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextArrival).format('hh:mm'));
 
-    $("tbody").append("<tr> '<td>  " + dataSnapshot.val().Train + " </td> <td> " + dataSnapshot.val().Destination + " </td> <td> " + dataSnapshot.val().Frequency + " </td> <td> " + moment(nextArrival).format('hh:mm') + " </td> <td> " + minutesAway + " </td>' </tr>")
+    $("tbody").append("<tr> '<td>  " + trainN + " </td> <td> " + destinationN + " </td> <td> " + dataSnapshot.val().Frequency + " </td> <td> " + moment(nextArrival).format('hh:mm') + " </td> <td> " + minutesAway + " </td>' </tr>")
     
   });
 
