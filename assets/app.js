@@ -11,14 +11,7 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database();
-  //#train-name
-  //#destination-name
-  //#train-time
-  //#train-frequency
-  //#submit
-
-  
-
+ 
 $("#submit").on("click", function() {
   
   const trainN = $("#train-name").val().trim();
@@ -54,43 +47,43 @@ database.ref().on("child_added",function(dataSnapshot,prevChildKey){
 // $(".table").empty();
 var trainN = dataSnapshot.val().Name;
 var destinationN = dataSnapshot.val().Destination;
-var trainT = dataSnapshot.val().Time;
-var trainF = dataSnapshot.val().Frequency;
+var firstTime = dataSnapshot.val().Time;
+var tFrequency = dataSnapshot.val().Frequency;
 console.log("nickname"+trainN);
 console.log("where"+destinationN);
-console.log("what time"+trainT);
-console.log("how often"+trainF);
+console.log("what time"+firstTime);
+console.log("how often"+tFrequency);
 
 
 //function using moment.js
 
-//Copy paste from exercise 21 TrainPredictions
+//This is very strongly inspired by exercise 21 TrainPredictions
 
-let tFrequency = 60;
-
-let firstTime = "09:35";
-
-let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+var firstTimeConverted = moment(firstTime, 'HH:mm').subtract(1, "month");
     console.log(firstTimeConverted);
 
-    // Current Time
-    let currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+
+var currentTime = moment();
+console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+
+
+
 
     // Difference between the times
-    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     console.log("DIFFERENCE IN TIME: " + diffTime);
 
     // Time apart (remainder)
-    let tRemainder = diffTime % tFrequency;
+    var tRemainder = diffTime % tFrequency;
     console.log(tRemainder);
 
     // Minute Until Train
-    let minutesAway = tFrequency - tRemainder;
+    var minutesAway = tFrequency - tRemainder;
     console.log("MINUTES TILL TRAIN: " + minutesAway);
 
     // Next Train
-    let nextArrival = moment().add(minutesAway, "minutes");
+    var nextArrival = moment().add(minutesAway, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextArrival).format('hh:mm'));
 
     $("tbody").append("<tr> '<td>  " + trainN + " </td> <td> " + destinationN + " </td> <td> " + dataSnapshot.val().Frequency + " </td> <td> " + moment(nextArrival).format('hh:mm') + " </td> <td> " + minutesAway + " </td>' </tr>")
