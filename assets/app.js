@@ -10,6 +10,7 @@ const firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+  var database = firebase.database();
   //#train-name
   //#destination-name
   //#train-time
@@ -35,7 +36,16 @@ $("#newtrain").text(trainN);
 $("#newtrain0").text(destinationN);
 $("#newtrain1").text(trainF);
 
+var nTrain = {
+  Destination: destinationN
+}
+
+database.ref().push(nTrain);
+console.log(nTrain.Destination)
+
+
 })
+
 
 
 //Convert time in minutes. 1440 in 24hours 
