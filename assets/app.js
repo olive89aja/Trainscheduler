@@ -32,10 +32,6 @@ $("#submit").on("click", function() {
   const trainF = $("#train-frequency").val();
   console.log(trainF);
 
-$("#newtrain").text(trainN); 
-$("#newtrain0").text(destinationN);
-$("#newtrain1").text(trainF);
-
 var nTrain = {
   Name: trainN,
   Destination: destinationN,
@@ -49,26 +45,24 @@ console.log(nTrain.Destination);
 console.log(nTrain.Time);
 console.log(nTrain.Frequency);
 
+   
 })
 
 // source for child_added : class + https://firebase.google.com/docs/database/admin/retrieve-data
 
 database.ref().on("child_added",function(dataSnapshot,prevChildKey){
-
+// $(".table").empty();
 var trainN = dataSnapshot.val().Name;
 var destinationN = dataSnapshot.val().Destination;
 var trainT = dataSnapshot.val().Time;
 var trainF = dataSnapshot.val().Frequency;
+console.log("nickname"+trainN);
 console.log("where"+destinationN);
-$("#newtrain").text(trainN); 
-$("#newtrain0").text(destinationN);
-$("#newtrain1").text(trainF);
-
-})
+console.log("what time"+trainT);
+console.log("how often"+trainF);
 
 
 //function using moment.js
-function calculateTrains(){
 
 //Copy paste from exercise 21 TrainPredictions
 
@@ -99,9 +93,8 @@ let firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
     let nextArrival = moment().add(minutesAway, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextArrival).format('hh:mm'));
 
-    $("#newtrain2").text(moment(nextArrival).format('hh:mm'));
-    $("#newtrain3").text(minutesAway);
+    $("tbody").append("<tr> '<td>  " + dataSnapshot.val().Train + " </td> <td> " + dataSnapshot.val().Destination + " </td> <td> " + dataSnapshot.val().Frequency + " </td> <td> " + moment(nextArrival).format('hh:mm') + " </td> <td> " + minutesAway + " </td>' </tr>")
+    
+  });
 
-  }
 
-calculateTrains();
