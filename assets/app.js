@@ -37,15 +37,30 @@ $("#newtrain0").text(destinationN);
 $("#newtrain1").text(trainF);
 
 var nTrain = {
-  Destination: destinationN
+  Name: trainN,
+  Destination: destinationN,
+  Time: trainT,
+  Frequency:trainF
 }
 
 database.ref().push(nTrain);
-console.log(nTrain.Destination)
-
+console.log(nTrain.Name);
+console.log(nTrain.Destination);
+console.log(nTrain.Time);
+console.log(nTrain.Frequency);
 
 })
 
+database.ref().on("child_added",function(snapshot,prevChildKey){
+
+var trainN
+var destinationN
+var trainT
+var trainF
+
+
+
+})
 
 
 //Convert time in minutes. 1440 in 24hours 
